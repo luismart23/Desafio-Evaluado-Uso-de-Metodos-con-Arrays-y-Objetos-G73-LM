@@ -39,22 +39,27 @@ const listadoTotalPacientesArray = radiologiaArray.concat(traumatologiaArray, de
 console.log(listadoTotalPacientesArray)
 
 
-// RADIOLOGIA 
+// RADIOLOGIA
 // 2. Eliminar el primer y último elemento del arreglo de Radiología
+
 // elimina el primer elemento del array
-radiologiaArray.shift();
-console.log(radiologiaArray);
+const primerElemento = radiologiaArray.shift();
+console.log(primerElemento, "primer eliminado radiología")
+// console.log(radiologiaArray)
+
 
 // elimina el ultimo elemento del array
-radiologiaArray.pop();
-console.log(radiologiaArray);
+const ultimoElemento = radiologiaArray.pop();
+console.log(ultimoElemento, "ultimo eliminado radiología")
+// console.log(radiologiaArray)
+
 
 const radiologiahtml = document.getElementById("radiologiahtml")
 
 const table1Radiologia = document.getElementById('table1Radiologia')
 table1Radiologia.innerHTML = ""
 radiologiaArray.forEach((item) => {
-    console.log(item)
+    // console.log(item)
 
     table1Radiologia.innerHTML += `
     <tr>
