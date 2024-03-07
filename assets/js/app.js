@@ -26,7 +26,7 @@ const dentalArray = [
     { hora: '14:00', especialista: 'RAQUEL VILLASECA', paciente: 'ANA SEPULVEDA', rut: '14441281-0', prevision: 'ISAPRE' }
 ];
 
-// Pacientes agregados
+// Pacientes agregados con button
 const agregarHorasArray = [
     { hora: "09:00", especialista: "RENÉ POBLETE", paciente: "ANA GELLONA", rut: "13123329-7", prevision: "ISAPRE" },
     { hora: "09:30", especialista: "MARIA SOLAR", paciente: "RAMIRO ANDRADE", rut: "12221451-K", prevision: "FONASA" },
@@ -39,7 +39,7 @@ const listadoTotalPacientesArray = radiologiaArray.concat(traumatologiaArray, de
 console.log(listadoTotalPacientesArray)
 
 
-// RADIOLOGIA 1
+// RADIOLOGIA 
 // 2. Eliminar el primer y último elemento del arreglo de Radiología
 // elimina el primer elemento del array
 radiologiaArray.shift();
@@ -69,7 +69,7 @@ radiologiaArray.forEach((item) => {
 
 
 
-// TRAUMATOLOGIA 2
+// TRAUMATOLOGIA 
 const traumatologiahtml = document.getElementById("traumatologiahtml")
 
 const addHoursButton = document.getElementById("addHoursButton")
@@ -104,7 +104,7 @@ addHoursButton.addEventListener('click', () => {
     })
 });
 
-// DENTAL 3
+// DENTAL 
 const dentalhtml = document.getElementById("dentalhtml")
 
 const table3Dental = document.getElementById('table3Dental')
@@ -140,14 +140,11 @@ dentalArray.forEach((item) => {
 const listadoNombres = document.getElementById("listadoNombres")
 listadoNombres.innerHTML = ""
 
+listadoNombres.innerHTML = '<ol>';
 listadoTotalPacientesArray.forEach((item) => {
-    // console.log(item)
-
-    listadoNombres.innerHTML += `
-   <ul>
-    <li>${item.paciente}</li>
-    </ul> `
-})
+    listadoNombres.innerHTML += `<li>${item.paciente}</li>`;
+});
+listadoNombres.innerHTML += '</ol>';
 
 // 5. Filtrar aquellos pacientes que indican ser de ISAPRE en la lista de consultas médicas
 // de Dental
@@ -164,3 +161,5 @@ const pacienteFonasa = traumatologiaArray
     .map(cita => `${cita.paciente} - ${cita.prevision}`);
 
 console.log(pacienteFonasa.join('\n'));
+
+// ________________FIN_________________________-
