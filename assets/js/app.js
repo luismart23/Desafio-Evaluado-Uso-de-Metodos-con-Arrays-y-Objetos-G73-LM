@@ -26,6 +26,7 @@ const dentalArray = [
     { hora: '14:00', especialista: 'RAQUEL VILLASECA', paciente: 'ANA SEPULVEDA', rut: '14441281-0', prevision: 'ISAPRE' }
 ];
 
+// Pacientes agregados
 const agregarHorasArray = [
     { hora: "09:00", especialista: "RENÉ POBLETE", paciente: "ANA GELLONA", rut: "13123329-7", prevision: "ISAPRE" },
     { hora: "09:30", especialista: "MARIA SOLAR", paciente: "RAMIRO ANDRADE", rut: "12221451-K", prevision: "FONASA" },
@@ -34,9 +35,20 @@ const agregarHorasArray = [
     { hora: "12:00", especialista: "MATIAS ARAVENA", paciente: "SUSANA POBLETE", rut: "14345656-6", prevision: "FONASA" }
 ];
 
+const listadoTotalPacientesArray = radiologiaArray.concat(traumatologiaArray, dentalArray);
+console.log(listadoTotalPacientesArray)
 
 
 // RADIOLOGIA 1
+// 2. Eliminar el primer y último elemento del arreglo de Radiología
+// elimina el primer elemento del array
+radiologiaArray.shift();
+console.log(radiologiaArray);
+
+// elimina el ultimo elemento del array
+radiologiaArray.pop();
+console.log(radiologiaArray);
+
 const radiologiahtml = document.getElementById("radiologiahtml")
 
 const table1Radiologia = document.getElementById('table1Radiologia')
@@ -54,6 +66,7 @@ radiologiaArray.forEach((item) => {
     </tr>
     `
 })
+
 
 
 // TRAUMATOLOGIA 2
@@ -75,6 +88,7 @@ traumatologiaArray.forEach((item) => {
     </tr>
     `
 })
+// 1. Agregar las siguientes horas al arreglo de Traumatología
 addHoursButton.addEventListener('click', () => {
     agregarHorasArray.forEach((item) => {
         // console.log(item)
@@ -108,3 +122,45 @@ dentalArray.forEach((item) => {
     </tr>  `
 })
 
+
+// 3. Imprimir en la página HTML, la lista de consultas médicas de Dental.
+const listaDental = document.getElementById("listaDental")
+listaDental.innerHTML = ""
+
+dentalArray.forEach((item) => {
+    // console.log(item)
+
+    listaDental.innerHTML += `
+   <ul>
+    <li>${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}</li>
+    </ul> `
+})
+
+// 4. Imprimir un listado total de todos los pacientes que se atendieron en el centro médico. 
+const listadoNombres = document.getElementById("listadoNombres")
+listadoNombres.innerHTML = ""
+
+listadoTotalPacientesArray.forEach((item) => {
+    // console.log(item)
+
+    listadoNombres.innerHTML += `
+   <ul>
+    <li>${item.paciente}</li>
+    </ul> `
+})
+
+// 5. Filtrar aquellos pacientes que indican ser de ISAPRE en la lista de consultas médicas
+// de Dental
+const pacienteIsapre = dentalArray
+    .filter(cita => cita.prevision === 'ISAPRE')
+    .map(cita => `${cita.paciente} - ${cita.prevision}`);
+
+console.log(pacienteIsapre.join('\n'));
+
+// 6. Filtrar aquellos pacientes que indican ser de FONASA en la lista de consultas médicas
+// de Traumatología
+const pacienteFonasa = traumatologiaArray
+    .filter(cita => cita.prevision === 'FONASA')
+    .map(cita => `${cita.paciente} - ${cita.prevision}`);
+
+console.log(pacienteFonasa.join('\n'));
